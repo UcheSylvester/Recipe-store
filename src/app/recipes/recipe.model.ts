@@ -1,5 +1,5 @@
 // creating a model for the recipe
-export class recipe {
+export class Recipe {
   public name: string;
   public description: string;
   public imagePath: string;
@@ -11,8 +11,3 @@ export class recipe {
   }
 }
 
-// we could still use interface here
-// export interface IRecipe {
-//   name: string;
-//   description: string;
-// }
