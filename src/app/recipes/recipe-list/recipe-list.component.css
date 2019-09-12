@@ -1,0 +1,21 @@
+div.recipe {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(236, 230, 230);
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 1em;
+}
+
+div.recipe a {
+  display: flex;
+  text-decoration: none;
+  color: rgb(66, 63, 63);
+  justify-content: space-between;
+}
+
+img.recipe-image {
+  border-radius: 50%;
+  max-width: 50px;
+  padding: 3px;
+}
