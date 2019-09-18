@@ -1,0 +1,5 @@
+img.recipe-image {
+  max-height: 15em;
+  max-width: 15em;
+  border-radius: 50%;
+}
