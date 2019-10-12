@@ -1,3 +1,5 @@
+import { Ingredient } from '../shared/ingredient.model';
+
 // creating a model for the recipe
 // export class Recipe {
 //   public name: string;
@@ -15,5 +17,6 @@ export interface Recipe {
   name: string;
   description: string;
   imagePath: string;
+  ingredients: Ingredient[]
 }
 
