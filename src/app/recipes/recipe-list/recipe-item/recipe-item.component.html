@@ -1,5 +1,5 @@
-<div class="recipe" (click)="onRecipeClick()">
-  <a style="cursor: pointer;">
+<div class="recipe">
+  <a [routerLink]="[index]" routerLinkActive="active">
     <div>
       <h4>{{ recipe.name }}</h4>
       <p>{{ recipe.description }}</p>
