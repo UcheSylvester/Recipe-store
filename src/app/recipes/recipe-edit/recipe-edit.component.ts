@@ -41,8 +41,8 @@ export class RecipeEditComponent implements OnInit {
     this.editMode
       ? this.recipeService.updateRecipe(this.id, this.recipeForm.value)
       : this.recipeService.addRecipe(this.recipeForm.value);
-  
-    this.onCancel()
+
+    this.onCancel();
   }
 
   onAddIngredient() {
@@ -58,7 +58,11 @@ export class RecipeEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route})
+    this.router.navigate(["../"], { relativeTo: this.route });
+  }
+
+  onDeleteIngredient(index: number) {
+    (<FormArray>this.recipeForm.get("ingredients")).removeAt(index);
   }
 
   private initForm() {
