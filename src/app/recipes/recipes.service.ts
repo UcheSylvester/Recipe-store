@@ -61,6 +61,8 @@ export class RecipesService {
     }
   ];
 
+  // private recipes: Recipe[] = []
+
   constructor(private shoppingListService: ShoppingListService) {}
 
   getRecipes(): Recipe[] {
