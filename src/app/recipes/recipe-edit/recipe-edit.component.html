@@ -28,7 +28,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <img [src]="imagePath.value" alt="" class="img-responsive" />
+      <img [src]="imagePath.value" alt="" class="img-thumbnail" />
     </div>
   </div>
 
@@ -67,21 +67,25 @@
           </div>
 
           <div class="col-xs-2">
-            <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)">X</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="onDeleteIngredient(i)"
+            >
+              X
+            </button>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <button
-            type="button"
-            class="btn btn-success"
-            (click)="onAddIngredient()"
-          >
-            Add Ingredient
-          </button>
-        </div>
+      <div class="col-xs-12">
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="onAddIngredient()"
+        >
+          Add Ingredient
+        </button>
       </div>
     </div>
   </div>
