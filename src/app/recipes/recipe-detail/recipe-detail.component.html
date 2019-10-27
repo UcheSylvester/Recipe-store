@@ -30,14 +30,14 @@
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <li class="dropdown-item">
-            <a (click)="onAddToShoppingList()" style="cursor: pointer"
-              >To Shopping List</a
-            >
+            <a (click)="onAddToShoppingList()">To Shopping List</a>
           </li>
           <li class="dropdown-item">
-            <a (click)="onEditRecipe()" style="cursor: pointer;">Edit Recipe</a>
+            <a (click)="onEditRecipe()">Edit Recipe</a>
           </li>
-          <li class="dropdown-item"><a href="#">Delete Recipe</a></li>
+          <li class="dropdown-item">
+            <a (click)="onDeleteRecipe()">Delete Recipe</a>
+          </li>
         </ul>
       </div>
     </div>

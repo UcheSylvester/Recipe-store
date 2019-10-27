@@ -3,3 +3,7 @@ img.recipe-image {
   max-width: 15em;
   border-radius: 50%;
 }
+
+a {
+  cursor: pointer;
+}
