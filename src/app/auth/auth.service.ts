@@ -1,9 +1,11 @@
 import { Injectable } from "@angular/core";
 import * as firebase from "firebase";
-import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable()
 export class AuthService {
+  token: string;
+  isSignedIn: boolean;
+
   constructor() {}
 
   signupUser(email: string, password: string) {
@@ -21,8 +23,38 @@ export class AuthService {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(response => console.log(response))
+      .then(response => {
+        console.log("signing in", response);
+
+        // getting the token immediately a user signs in
+        // console.log("current user", firebase.auth().currentUser);
+        firebase
+          .auth()
+          .currentUser.getIdToken()
+          .then(retrievedToken => (this.token = retrievedToken));
+      })
       .catch(error => console.log(error));
+    // this.getCurrentUser();
+  }
+
+  getToken(): string {
+    firebase
+      .auth()
+      .currentUser.getIdToken()
+      .then((retrievedToken: string) => (this.token = retrievedToken));
+    return this.token;
+  }
+
+  isAuthenticated(): boolean {
+    return this.token != null;
+  }
+
+  getCurrentUser() {
+    if (this.isAuthenticated()) {
+      return firebase.auth().currentUser.providerData[0].email;
+    } else {
+      console.log("noooo");
+    }
   }
 
   handleError(error: any) {

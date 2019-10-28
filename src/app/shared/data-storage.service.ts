@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 
 import { RecipesService } from "../recipes/recipes.service";
 import { Recipe } from "../recipes/recipe.model";
+import { AuthService } from "../auth/auth.service";
 
 @Injectable()
 export class DataStorageService {
@@ -12,19 +13,22 @@ export class DataStorageService {
 
   constructor(
     private http: HttpClient,
-    private recipeService: RecipesService
+    private recipeService: RecipesService,
+    private authService: AuthService
   ) {}
 
   storeRecipes(): Observable<Recipe[]> {
+    const token = this.authService.getToken();
     return this.http.put<Recipe[]>(
-      `${this.url}recipes.json`,
+      `${this.url}recipes.json?auth=${token}`,
       this.recipeService.getRecipes()
     );
   }
 
   getRecipes() {
+    const token = this.authService.getToken();
     this.http
-      .get(`${this.url}/recipes.json`)
+      .get(`${this.url}/recipes.json?auth=${token}`)
       .pipe(
         map((response: Recipe[]) => {
           let recipes = response;
