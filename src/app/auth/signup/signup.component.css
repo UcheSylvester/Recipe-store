@@ -3,3 +3,7 @@ div.row {
   justify-content: center;
   align-items: center;
 }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

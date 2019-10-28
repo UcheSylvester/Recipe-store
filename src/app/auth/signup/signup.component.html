@@ -6,9 +6,10 @@
         <input
           type="email"
           id="email"
-          name="name"
+          name="email"
           class="form-control"
           ngModel
+          required
         />
       </div>
 
@@ -20,10 +21,14 @@
           name="password"
           class="form-control"
           ngModel
+          required
+          minlength="6"
         />
       </div>
 
-      <button type="submit">Sign up</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+        Sign up
+      </button>
     </form>
   </div>
 </div>
