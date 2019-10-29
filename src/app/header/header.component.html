@@ -45,7 +45,7 @@
       </li>
 
       <li class="nav-item" *ngIf="auth.isAuthenticated()">
-        <a class="nav-link">log out</a>
+        <a class="nav-link" (click)="onLogout()">log out</a>
       </li>
 
       <div class="dropdown" appDropdown>

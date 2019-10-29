@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import * as firebase from "firebase";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthService {
   token: string;
   isSignedIn: boolean;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   signupUser(email: string, password: string) {
     // console.log("signing user up 12345454");
@@ -26,8 +27,9 @@ export class AuthService {
       .then(response => {
         console.log("signing in", response);
 
+        this.router.navigate(["/"]);
+
         // getting the token immediately a user signs in
-        // console.log("current user", firebase.auth().currentUser);
         firebase
           .auth()
           .currentUser.getIdToken()
@@ -35,6 +37,12 @@ export class AuthService {
       })
       .catch(error => console.log(error));
     // this.getCurrentUser();
+  }
+
+  logOut() {
+    firebase.auth().signOut();
+    this.token = null;
+    console.log("logout out", this.token);
   }
 
   getToken(): string {
@@ -51,15 +59,15 @@ export class AuthService {
 
   getCurrentUser() {
     if (this.isAuthenticated()) {
-      return firebase.auth().currentUser.providerData[0].email;
-    } else {
-      console.log("noooo");
-    }
-  }
+      // getting the email and converting it to a string
+      let email = firebase.auth().currentUser.providerData[0].email.split("@");
+      // email.pop(); //removing the last part
+      const [name, suffix] = email;
 
-  onLogOut() {
-    firebase.auth().signOut();
-    this.token = null;
+      return name.toLocaleUpperCase();
+    } else {
+      console.log("couldn't get current user, users is not authenticated");
+    }
   }
 
   handleError(error: any) {
