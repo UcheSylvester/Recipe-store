@@ -57,6 +57,11 @@ export class AuthService {
     }
   }
 
+  onLogOut() {
+    firebase.auth().signOut();
+    this.token = null;
+  }
+
   handleError(error: any) {
     if (error.code === "auth/email-already-in-use") {
       console.log("you are already registered, please sign in");

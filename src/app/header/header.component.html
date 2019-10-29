@@ -44,6 +44,10 @@
         <a class="nav-link">{{ auth.getCurrentUser() }}</a>
       </li>
 
+      <li class="nav-item" *ngIf="auth.isAuthenticated()">
+        <a class="nav-link">log out</a>
+      </li>
+
       <div class="dropdown" appDropdown>
         <li class="nav-item" *ngIf="auth.isAuthenticated()">
           <a
